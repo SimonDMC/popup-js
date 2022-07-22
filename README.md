@@ -31,7 +31,7 @@ A full documentation is available [here](https://popup-js.rtfd.io). **[TODO]**
 Create a popup by instantiating the Popup class with customization parameters.
 
 ```javascript
-const my-popup = new Popup({
+const myPopup = new Popup({
     id: 'my-popup',
     title: 'My First Popup',
     content: `

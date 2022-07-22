@@ -1,0 +1,24 @@
+{
+  "name": "@simondmc/popup-js",
+  "version": "1.0.1",
+  "description": "A sleek and highly customizable JavaScript library used to generate full-screen infographic popups with minimal effort.",
+  "main": "popup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SimonDMC/popup-js.git"
+  },
+  "keywords": [
+    "popup",
+    "js",
+		"javascript"
+  ],
+  "author": "SimonDMC <simon@simondmc.com> (https://simondmc.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SimonDMC/popup-js/issues"
+  },
+  "homepage": "https://github.com/SimonDMC/popup-js#readme"
+}

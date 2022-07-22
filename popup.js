@@ -5,7 +5,7 @@ let head  = document.getElementsByTagName('head')[0];
 let link  = document.createElement('link');
 link.rel  = 'stylesheet';
 link.type = 'text/css';
-link.href = './styles/popup.css';
+link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.0.1/popup.min.css';
 link.media = 'all';
 head.appendChild(link);
 link.onload = function() {
