@@ -42,7 +42,7 @@ const myPopup = new Popup({
 
 Display the popup by calling the `.show()` method.
 ```javascript
-my-popup.show();
+myPopup.show();
 ```
 Examples of a more complex popup:
 ```javascript
