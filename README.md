@@ -14,16 +14,16 @@ A demo usage of `popup-js` is available at [simondmc.com/popup-demo](https://sim
 Install `popup-js` using a script tag.
 
 ```html
-  [TODO] <script src="https://cdn.jsdelivr.net/npm/popup-js@latest/popup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.0.1/popup.min.js"></script>
 ```
-through npm or
+using npm or
 ```html
-  [TODO] <script src="https://cdn.jsdelivr.net/gh/SimonDMC/popup-js/src/popup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/SimonDMC/popup-js@1.0.1/popup.min.js"></script>
 ```
-through github.
+using github.
 ## Documentation
 
-A full documentation is available [here](https://popup-js.rtfd.io). **[TODO]**
+A full documentation is available [here](https://popup-js.rtfd.io).
 
 
 ## Usage/Examples
