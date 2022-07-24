@@ -5,7 +5,8 @@ let head  = document.getElementsByTagName('head')[0];
 let link  = document.createElement('link');
 link.rel  = 'stylesheet';
 link.type = 'text/css';
-link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.0.1/popup.min.css';
+link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.0.2/popup.min.css';
+//link.href = '../styles/popup.css';
 link.media = 'all';
 head.appendChild(link);
 link.onload = function() {
@@ -50,8 +51,8 @@ class Popup {
         let buttonWidth = this.params.buttonWidth || 'fit-content';
 
         // height and width calculations
-        let height = 'min(' + (770 * heightMultiplier) + 'px, ' + (80 * heightMultiplier) + 'vw)';
-        let width = 'min(' + (770 * widthMultiplier) + 'px, ' + (80 * widthMultiplier) + 'vw)';
+        let height = 'min(' + (770 * heightMultiplier) + 'px, ' + (90 * heightMultiplier) + 'vw)';
+        let width = 'min(' + (770 * widthMultiplier) + 'px, ' + (90 * widthMultiplier) + 'vw)';
 
         // create style tag https://stackoverflow.com/a/524721/19271522
         var css = `

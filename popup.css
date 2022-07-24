@@ -28,25 +28,25 @@
     width: 100%;
     height: 20%;
 }
-.popup-title {
-    margin-top: 2%;
-    font-size: min(45px, 5vw);
-    font-weight: 600;
-}
-.popup-close {
-    position: absolute;
-    top: 0%;
-    right: 2.2%;
-    cursor: pointer;
-    font-size: min(48.1px, 5vw);
-}
-.popup-body {
-    font-size: min(25px, 2.6vw);
-    text-align: center;
-}
-.popup-body p {
-    margin-top: 2%;
-    margin-bottom: 2%;
+.popup-title {	
+    margin-top: 5vh;	
+    font-size: min(55px, 11vw);	
+    font-weight: 600;	
+}	
+.popup-close {	
+    position: absolute;	
+    top: 0%;	
+    right: 2.2%;	
+    cursor: pointer;	
+    font-size: min(48.1px, 8vw);
+}	
+.popup-body {	
+    font-size: min(25px, 5.5vw);	
+    text-align: center;	
+}	
+.popup-body p {	
+    margin-top: 2%;	
+    margin-bottom: 2%;	
 }
 .popup-body:last-child {
     margin-bottom: 4%;
@@ -55,9 +55,6 @@
     text-decoration: none;
     font-weight: 600;
     color: rgb(56, 56, 56);
-}
-.popup-body button {
-    font-size: min(25px, 2.6vw);
 }
 
 /* fade-in and fade-out */
@@ -81,7 +78,7 @@
 .popup button {
     padding: 1% 2%;
     border-radius: min(10px, 1.5vw);
-    font-size: min(25px, 2.6vw);
+    font-size: inherit;
     cursor: pointer;
 }
 
