@@ -5,7 +5,7 @@ let head  = document.getElementsByTagName('head')[0];
 let link  = document.createElement('link');
 link.rel  = 'stylesheet';
 link.type = 'text/css';
-link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.0.3/popup.min.css';
+link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.1.0/popup.min.css';
 //link.href = '../styles/popup.css';
 link.media = 'all';
 head.appendChild(link);
@@ -94,7 +94,6 @@ class Popup {
         for (let i = 0; i < content.length; i++) {
             let line = content[i].trim();
             if (line === '') continue;
-
             // add <p>
             if (line.includes('§')) {
                 let split = line.split('§');
@@ -109,9 +108,12 @@ class Popup {
             /* ------- Reduced element formatting ------- */
 
             // a
-            line = line.replace(/{a-(.*)}\[(.*)]/g, '<a href="$1" target="_blank">$2</a>');
+            while (/{a-(.*?)}\[(.*?)]/.test(line))
+                line = line.replace(/{a-(.*?)}\[(.*?)]/g, '<a href="$1" target="_blank">$2</a>');
+            
             // button
-            line = line.replace(/{btn-(.*)}\[(.*)]/g, '<button class="$1">$2</button>');
+            while (/{btn-(.*?)}\[(.*?)]/.test(line))
+                line = line.replace(/{btn-(.*?)}\[(.*?)]/g, '<button class="$1">$2</button>');
 
             // reduced style formatting
             line = line.replace(/([^\\]?){/g, '$1<span class="')
@@ -166,5 +168,11 @@ class Popup {
         el.classList.remove('hidden');
         el.classList.remove('fade-out');
         el.classList.add('fade-in');
+    }
+
+    hide() {
+        let el = document.querySelector('.popup.' + this.id);
+        el.classList.remove('fade-in');
+        el.classList.add('fade-out');
     }
 }
