@@ -5,7 +5,7 @@ let head  = document.getElementsByTagName('head')[0];
 let link  = document.createElement('link');
 link.rel  = 'stylesheet';
 link.type = 'text/css';
-link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.1.0/popup.min.css';
+link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.1.1/popup.min.css';
 //link.href = '../styles/popup.css';
 link.media = 'all';
 head.appendChild(link);
@@ -40,8 +40,10 @@ class Popup {
         let backgroundColor = this.params.backgroundColor || '#ffffff';
         let closeColor = this.params.closeColor || '#000000';
         let textColor = this.params.textColor || '#000000';
+        let linkColor = this.params.linkColor || '#383838';
         let widthMultiplier = this.params.widthMultiplier || 1;
         let heightMultiplier = this.params.heightMultiplier || 0.66;
+        let fontSizeMultiplier = this.params.fontSizeMultiplier || 1;
         let sideMargin = this.params.sideMargin || '3%';
         let titleMargin = this.params.titleMargin || '2%';
         let lineSpacing = this.params.lineSpacing || 'auto';
@@ -53,6 +55,9 @@ class Popup {
         // height and width calculations
         let height = 'min(' + (770 * heightMultiplier) + 'px, ' + (90 * heightMultiplier) + 'vw)';
         let width = 'min(' + (770 * widthMultiplier) + 'px, ' + (90 * widthMultiplier) + 'vw)';
+
+        // font size calculation
+        let fontSize = 'min(' + (25 * fontSizeMultiplier) + 'px, ' + (5.5 * fontSizeMultiplier) + 'vw)';
 
         // create style tag https://stackoverflow.com/a/524721/19271522
         var css = `
@@ -79,10 +84,15 @@ class Popup {
             margin-left: ${sideMargin};
             margin-right: ${sideMargin};
             line-height: ${lineSpacing};
+            font-size: ${fontSize};
         }
 
         .popup.${this.id} .popup-body button { 
             width: ${buttonWidth}; 
+        }
+
+        .popup.${this.id} .popup-body a { 
+            color: ${linkColor};
         }`;
         let head = document.head;
         let style = document.createElement('style');
