@@ -5,7 +5,7 @@ let head  = document.getElementsByTagName('head')[0];
 let link  = document.createElement('link');
 link.rel  = 'stylesheet';
 link.type = 'text/css';
-link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.1.1/popup.min.css';
+link.href = 'https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.2.0/popup.min.css';
 //link.href = '../styles/popup.css';
 link.media = 'all';
 head.appendChild(link);
@@ -20,7 +20,7 @@ link.onload = function() {
 class Popup {
 
     // build popup with parameters
-    constructor(params) {
+    constructor(params = {}) {
         this.params = params;
         // if css is already downloaded, immediately load popup
         if (loaded) {
@@ -33,24 +33,27 @@ class Popup {
 
     init() {
         // assign parameters with default values
-        this.id = this.params.id || 'popup';
-        let title = this.params.title || 'Popup Title';
-        let content = this.params.content || 'Popup Content';
-        let titleColor = this.params.titleColor || '#000000';
-        let backgroundColor = this.params.backgroundColor || '#ffffff';
-        let closeColor = this.params.closeColor || '#000000';
-        let textColor = this.params.textColor || '#000000';
-        let linkColor = this.params.linkColor || '#383838';
-        let widthMultiplier = this.params.widthMultiplier || 1;
-        let heightMultiplier = this.params.heightMultiplier || 0.66;
-        let fontSizeMultiplier = this.params.fontSizeMultiplier || 1;
-        let sideMargin = this.params.sideMargin || '3%';
-        let titleMargin = this.params.titleMargin || '2%';
-        let lineSpacing = this.params.lineSpacing || 'auto';
-        let showImmediately = this.params.showImmediately || false;
-        let showOnce = this.params.showOnce || false;
-        let dynamicHeight = this.params.dynamicHeight || false;
-        let buttonWidth = this.params.buttonWidth || 'fit-content';
+        this.id = this.params.id ?? 'popup';
+        let title = this.params.title ?? 'Popup Title';
+        let content = this.params.content ?? 'Popup Content';
+        let titleColor = this.params.titleColor ?? '#000000';
+        let backgroundColor = this.params.backgroundColor ?? '#ffffff';
+        let closeColor = this.params.closeColor ?? '#000000';
+        let textColor = this.params.textColor ?? '#000000';
+        let linkColor = this.params.linkColor ?? '#383838';
+        let widthMultiplier = this.params.widthMultiplier ?? 1;
+        let heightMultiplier = this.params.heightMultiplier ?? 0.66;
+        let fontSizeMultiplier = this.params.fontSizeMultiplier ?? 1;
+        let borderRadius = this.params.borderRadius ?? '15px';
+        let sideMargin = this.params.sideMargin ?? '3%';
+        let titleMargin = this.params.titleMargin ?? '2%';
+        let lineSpacing = this.params.lineSpacing ?? 'auto';
+        let showImmediately = this.params.showImmediately ?? false;
+        let showOnce = this.params.showOnce ?? false;
+        let dynamicHeight = this.params.dynamicHeight ?? false;
+        let allowClose = this.params.allowClose ?? true;
+        let fadeTime = this.params.fadeTime ?? '0.3s';
+        let buttonWidth = this.params.buttonWidth ?? 'fit-content';
 
         // height and width calculations
         let height = 'min(' + (770 * heightMultiplier) + 'px, ' + (90 * heightMultiplier) + 'vw)';
@@ -65,6 +68,7 @@ class Popup {
             background-color: ${backgroundColor};
             width:${width}; 
             height:${dynamicHeight ? 'fit-content' : height};
+            border-radius: ${borderRadius};
         }
 
         .popup.${this.id} .popup-header {
@@ -93,6 +97,10 @@ class Popup {
 
         .popup.${this.id} .popup-body a { 
             color: ${linkColor};
+        }
+        
+        .popup.${this.id}.fade-in, .popup.${this.id}.fade-out {
+            transition-duration: ${fadeTime};
         }`;
         let head = document.head;
         let style = document.createElement('style');
@@ -143,7 +151,7 @@ class Popup {
         <div class="popup-content">
             <div class="popup-header">
                 <div class="popup-title">${title}</div>
-                <div class="popup-close">&times;</div>
+                ${/* only add close button if allowClose is on */ allowClose ? '<div class="popup-close">&times;</div>' : ''}
             </div>
             <div class="popup-body">${content}</div>
         </div>`;
@@ -151,6 +159,8 @@ class Popup {
 
         document.querySelectorAll('.popup').forEach(el => el.addEventListener('click', e =>{
             if (e.target.className == 'popup-close' || e.target.classList.contains('popup')) {
+                // if allowClose is off, don't close
+                if (!allowClose) return;
                 // close popup
                 el.classList.remove('fade-in');
                 el.classList.add('fade-out');

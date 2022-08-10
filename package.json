@@ -1,6 +1,6 @@
 {
   "name": "@simondmc/popup-js",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A sleek and highly customizable JavaScript library used to generate full-screen infographic popups with minimal effort.",
   "main": "popup.js",
   "scripts": {

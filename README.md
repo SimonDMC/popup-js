@@ -4,21 +4,16 @@
 A sleek and highly customizable JavaScript library used to generate full-screen infographic popups with minimal effort.
 
 
-## Demo
-
-A demo usage of `popup-js` is available at [simondmc.com/popup-demo](https://simondmc.com/popup-demo). **[TODO]**
-
-
 ## Installation
 
 Install `popup-js` using a script tag.
 
 ```html
-  <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.1.1/popup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.2.0/popup.min.js"></script>
 ```
 using npm or
 ```html
-  <script src="https://cdn.jsdelivr.net/gh/SimonDMC/popup-js@1.1.1/popup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/SimonDMC/popup-js@1.2.0/popup.min.js"></script>
 ```
 using github.
 ## Documentation
