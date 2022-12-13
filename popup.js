@@ -1,5 +1,5 @@
-let queuedPopup,
-    loaded = null;
+const queuedPopups = [];
+let loaded = false;
 
 // download css and apply
 let head = document.getElementsByTagName("head")[0];
@@ -7,15 +7,17 @@ let link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
 link.href =
-    "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.3.0/popup.min.css";
+    "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.3.1/popup.min.css";
 //link.href = "../styles/popup.css";
 link.media = "all";
 head.appendChild(link);
 link.onload = function () {
     loaded = true;
-    if (queuedPopup) {
-        queuedPopup.init();
-        queuedPopup = null;
+    // if there are any queued popups, initialize them
+    if (queuedPopups.length > 0) {
+        while (queuedPopups.length > 0) {
+            queuedPopups.shift().init();
+        }
     }
 };
 
@@ -28,7 +30,7 @@ class Popup {
             this.init();
         } else {
             // queue up the popup to be shown when css finishes downloading
-            queuedPopup = this;
+            queuedPopups.push(this);
         }
     }
 
