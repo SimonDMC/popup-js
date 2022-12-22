@@ -4,19 +4,11 @@ A sleek and highly customizable JavaScript library used to generate full-screen 
 
 ## Installation
 
-Install `popup-js` using a script tag.
+Install `popup-js` with the following script tag:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.3.1/popup.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.0/popup.min.js"></script>
 ```
-
-using npm or
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/SimonDMC/popup-js@1.3.1/popup.min.js"></script>
-```
-
-using github.
 
 ## Documentation
 
@@ -62,7 +54,6 @@ const popup = new Popup({
     titleColor: "#4842f5",
     backgroundColor: "#bff7ff",
     showImmediately: true,
-    dynamicHeight: true,
     sideMargin: "15%",
 });
 ```
@@ -83,6 +74,7 @@ const infoPopup = new Popup({
     titleColor: "rgb(92, 0, 95)",
     titleMargin: "0",
     backgroundColor: "#ffebfe",
+    fixedHeight: true,
     showImmediately: true,
     showOnce: true,
 });
