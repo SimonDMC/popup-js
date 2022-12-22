@@ -100,6 +100,7 @@ Below is a table of all the parameters you can use to customize your popup.
 | `widthMultiplier`    | `number`   | `1`             | How wide should the popup be relatively to the default width.                                        |
 | `heightMultiplier`   | `number`   | `0.66`          | How tall should the popup be relatively to the default width (only used if `fixedHeight` is `true`). |
 | `fontSizeMultiplier` | `number`   | `1`             | How large should the content font be relatively to the default content font size.                    |
+| `font`               | `string`   | `Inter`         | The popup font.                                                                                      |
 | `titleMargin`        | `length`   | `2%`            | The space between the popup title and content.                                                       |
 | `sideMargin`         | `length`   | `3%`            | The space between the content and the edge of the popup.                                             |
 | `lineSpacing`        | `length`   | `auto`          | The spacing between lines in the popup body.                                                         |
@@ -118,6 +119,9 @@ Below is a table of all the parameters you can use to customize your popup.
 | `fadeTime`           | `time`     | `0.3s`          | The time it should take for the popup to fade in and out.                                            |
 | `hideCallback`       | `function` | `undefined`     | A function to be called when the popup is closed.                                                    |
 | `loadCallback`       | `function` | `undefined`     | A function to be called when the popup - and all its elements - are first loaded.                    |
+| `css`                | `string`   | `""`            | Custom CSS to be applied to the popup.                                                               |
+
+For a full explanation of the parameters, see the [documentation](https://popup-js.rtfd.io).
 
 ## License
 
