@@ -82,7 +82,42 @@ const infoPopup = new Popup({
 
 ![Color Guesser Popup Showcase](https://media.discordapp.net/attachments/847794209028833310/999926020817825872/unknown.png)
 
-View the full documentation [here](https://popup-js.rtfd.io).
+## Cheat Sheet
+
+Below is a table of all the parameters you can use to customize your popup.
+
+| Parameter            | Type       | Default         | Description                                                                                          |
+| -------------------- | ---------- | --------------- | ---------------------------------------------------------------------------------------------------- |
+| `id`                 | `string`   | `popup`         | The ID of the popup (must be unique).                                                                |
+| `title`              | `string`   | `Popup Title`   | The title of the popup.                                                                              |
+| `content`            | `string`   | `Popup Content` | The content of the popup.                                                                            |
+| `titleColor`         | `color`    | `#000000`       | The color of the title.                                                                              |
+| `backgroundColor`    | `color`    | `#FFFFFF`       | The color of the popup background.                                                                   |
+| `textColor`          | `color`    | `#000000`       | The color of the content.                                                                            |
+| `closeColor`         | `color`    | `#000000`       | The color of the close button.                                                                       |
+| `linkColor`          | `color`    | `#383838`       | The color of links.                                                                                  |
+| `fixedHeight`        | `boolean`  | `false`         | Whether the popup should have a fixed height.                                                        |
+| `widthMultiplier`    | `number`   | `1`             | How wide should the popup be relatively to the default width.                                        |
+| `heightMultiplier`   | `number`   | `0.66`          | How tall should the popup be relatively to the default width (only used if `fixedHeight` is `true`). |
+| `fontSizeMultiplier` | `number`   | `1`             | How large should the content font be relatively to the default content font size.                    |
+| `titleMargin`        | `length`   | `2%`            | The space between the popup title and content.                                                       |
+| `sideMargin`         | `length`   | `3%`            | The space between the content and the edge of the popup.                                             |
+| `lineSpacing`        | `length`   | `auto`          | The spacing between lines in the popup body.                                                         |
+| `buttonWidth`        | `length`   | `fit-content`   | The width of buttons in the popup body.                                                              |
+| `borderWidth`        | `length`   | `0`             | The width of the popup border.                                                                       |
+| `borderColor`        | `color`    | `#000000`       | The color of the popup border.                                                                       |
+| `borderRadius`       | `length`   | `15px`          | The popup border radius (controls how rounded the corners are).                                      |
+| `showImmediately`    | `boolean`  | `false`         | Whether the popup should be shown immediately after being created (usually on page load).            |
+| `showOnce`           | `boolean`  | `false`         | Whether the popup should only be shown once.                                                         |
+| `hideCloseButton`    | `boolean`  | `false`         | Whether the popup should display without a close button.                                             |
+| `hideTitle`          | `boolean`  | `false`         | Whether the popup should display without a title.                                                    |
+| `disableScroll`      | `boolean`  | `true`          | Whether page scrolling should be disabled while the popup is open.                                   |
+| `underlineLinks`     | `boolean`  | `false`         | Whether links should be underlined.                                                                  |
+| `allowClose`         | `boolean`  | `true`          | Whether the popup should be closeable by the user.                                                   |
+| `textShadow`         | `string`   | `none`          | The text shadow of the popup body.                                                                   |
+| `fadeTime`           | `time`     | `0.3s`          | The time it should take for the popup to fade in and out.                                            |
+| `hideCallback`       | `function` | `undefined`     | A function to be called when the popup is closed.                                                    |
+| `loadCallback`       | `function` | `undefined`     | A function to be called when the popup - and all its elements - are first loaded.                    |
 
 ## License
 
