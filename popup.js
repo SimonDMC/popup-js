@@ -258,6 +258,13 @@ class Popup {
                 .classList.add("fade-in");
             postShow(disableScroll);
         }
+
+        // hide popup on escape key press
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                this.hide();
+            }
+        });
     }
 
     show() {
