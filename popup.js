@@ -7,7 +7,7 @@ const link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
 link.href =
-    "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.0/popup.min.css";
+    "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.2/popup.min.css";
 //link.href = "../styles/popup.css";
 link.media = "all";
 head.appendChild(link);
@@ -51,113 +51,104 @@ class Popup {
     init() {
         // assign parameters with default values
         this.id = this.params.id ?? "popup";
-        const title = this.params.title ?? "Popup Title";
-        let content = this.params.content ?? "Popup Content";
-        const titleColor = this.params.titleColor ?? "#000000";
-        const backgroundColor = this.params.backgroundColor ?? "#ffffff";
-        const closeColor = this.params.closeColor ?? "#000000";
-        const textColor = this.params.textColor ?? "#000000";
-        const linkColor = this.params.linkColor ?? "#383838";
-        const widthMultiplier = this.params.widthMultiplier ?? 1;
-        const heightMultiplier = this.params.heightMultiplier ?? 0.66;
-        const fontSizeMultiplier = this.params.fontSizeMultiplier ?? 1;
-        const borderRadius = this.params.borderRadius ?? "15px";
-        const sideMargin = this.params.sideMargin ?? "3%";
-        const titleMargin = this.params.titleMargin ?? "2%";
-        const lineSpacing = this.params.lineSpacing ?? "auto";
-        const showImmediately = this.params.showImmediately ?? false;
-        const showOnce = this.params.showOnce ?? false;
-        const fixedHeight = this.params.fixedHeight ?? false;
-        const allowClose = this.params.allowClose ?? true;
-        const underlineLinks = this.params.underlineLinks ?? false;
-        const fadeTime = this.params.fadeTime ?? "0.3s";
-        const buttonWidth = this.params.buttonWidth ?? "fit-content";
-        const borderWidth = this.params.borderWidth ?? "0";
-        const borderColor = this.params.borderColor ?? "#000000";
-        const disableScroll = this.params.disableScroll ?? true;
-        const textShadow = this.params.textShadow ?? "none";
-        const hideCloseButton = this.params.hideCloseButton ?? false;
-        const hideTitle = this.params.hideTitle ?? false;
+        this.title = this.params.title ?? "Popup Title";
+        this.content = this.params.content ?? "Popup Content";
+        this.titleColor = this.params.titleColor ?? "#000000";
+        this.backgroundColor = this.params.backgroundColor ?? "#ffffff";
+        this.closeColor = this.params.closeColor ?? "#000000";
+        this.textColor = this.params.textColor ?? "#000000";
+        this.linkColor = this.params.linkColor ?? "#383838";
+        this.widthMultiplier = this.params.widthMultiplier ?? 1;
+        this.heightMultiplier = this.params.heightMultiplier ?? 0.66;
+        this.fontSizeMultiplier = this.params.fontSizeMultiplier ?? 1;
+        this.borderRadius = this.params.borderRadius ?? "15px";
+        this.sideMargin = this.params.sideMargin ?? "3%";
+        this.titleMargin = this.params.titleMargin ?? "2%";
+        this.lineSpacing = this.params.lineSpacing ?? "auto";
+        this.showImmediately = this.params.showImmediately ?? false;
+        this.showOnce = this.params.showOnce ?? false;
+        this.fixedHeight = this.params.fixedHeight ?? false;
+        this.allowClose = this.params.allowClose ?? true;
+        this.underlineLinks = this.params.underlineLinks ?? false;
+        this.fadeTime = this.params.fadeTime ?? "0.3s";
+        this.buttonWidth = this.params.buttonWidth ?? "fit-content";
+        this.borderWidth = this.params.borderWidth ?? "0";
+        this.borderColor = this.params.borderColor ?? "#000000";
+        this.disableScroll = this.params.disableScroll ?? true;
+        this.textShadow = this.params.textShadow ?? "none";
+        this.hideCloseButton = this.params.hideCloseButton ?? false;
+        this.hideTitle = this.params.hideTitle ?? false;
 
         // height and width calculations
-        const height =
-            "min(" +
-            770 * heightMultiplier +
-            "px, " +
-            90 * heightMultiplier +
-            "vw)";
-        const width =
-            "min(" +
-            770 * widthMultiplier +
-            "px, " +
-            90 * widthMultiplier +
-            "vw)";
+        this.height = `min(${770 * this.heightMultiplier}px, ${
+            90 * this.heightMultiplier
+        }vw)`;
+        this.width = `min(${770 * this.widthMultiplier}px, ${
+            90 * this.widthMultiplier
+        }vw)`;
 
         // font size calculation
-        const fontSize =
-            "min(" +
-            25 * fontSizeMultiplier +
-            "px, " +
-            5.5 * fontSizeMultiplier +
-            "vw)";
+        this.fontSize = `min(${25 * this.fontSizeMultiplier}px, ${
+            5.5 * this.fontSizeMultiplier
+        }vw)`;
 
         // create style tag https://stackoverflow.com/a/524721/19271522
-        let css = this.params.css ?? "";
-        css += `
+        this.css = this.params.css ?? "";
+        this.css += `
         .popup.${this.id} {
-            transition-duration: ${fadeTime};
-            text-shadow: ${textShadow};
+            transition-duration: ${this.fadeTime};
+            text-shadow: ${this.textShadow};
             font-family: '${
                 this.params.font ?? "Inter"
             }', 'Inter', Helvetica, sans-serif;
         }
         
         .popup.${this.id} .popup-content {
-            background-color: ${backgroundColor};
-            width:${width}; 
-            height:${fixedHeight ? height : "fit-content"};
-            border-radius: ${borderRadius};
-            border: ${borderWidth} solid ${borderColor};
+            background-color: ${this.backgroundColor};
+            width:${this.width}; 
+            height:${this.fixedHeight ? this.height : "fit-content"};
+            border-radius: ${this.borderRadius};
+            border: ${this.borderWidth} solid ${this.borderColor};
         }
 
         .popup.${this.id} .popup-header {
-            margin-bottom: ${titleMargin};
+            margin-bottom: ${this.titleMargin};
         }
 
         .popup.${this.id} .popup-title {
-            color: ${titleColor};
+            color: ${this.titleColor};
         }
 
         .popup.${this.id} .popup-close {
-            color: ${closeColor};
+            color: ${this.closeColor};
         }
 
         .popup.${this.id} .popup-body {
-            color: ${textColor};
-            margin-left: ${sideMargin};
-            margin-right: ${sideMargin};
-            line-height: ${lineSpacing};
-            font-size: ${fontSize};
+            color: ${this.textColor};
+            margin-left: ${this.sideMargin};
+            margin-right: ${this.sideMargin};
+            line-height: ${this.lineSpacing};
+            font-size: ${this.fontSize};
         }
 
         .popup.${this.id} .popup-body button { 
-            width: ${buttonWidth}; 
+            width: ${this.buttonWidth}; 
         }
 
         .popup.${this.id} .popup-body a { 
-            color: ${linkColor};
-            ${underlineLinks ? "text-decoration: underline;" : ""}
+            color: ${this.linkColor};
+            ${this.underlineLinks ? "text-decoration: underline;" : ""}
         }`;
 
         const head = document.head;
         const style = document.createElement("style");
         head.append(style);
-        style.appendChild(document.createTextNode(css));
+        style.appendChild(document.createTextNode(this.css));
 
         // process input text
-        content = content.split("\n");
-        for (let i = 0; i < content.length; i++) {
-            let line = content[i].trim();
+        this.content = this.content.split("\n");
+        for (let i = 0; i < this.content.length; i++) {
+            let line = this.content[i].trim();
             if (line === "") continue;
             // add <p>
             if (line.includes("§")) {
@@ -192,50 +183,45 @@ class Popup {
                 .replace(/([^\\]?)}\[/g, '$1">')
                 .replace(/([^\\]?)]/g, "$1</span>");
 
-            content[i] = line;
+            this.content[i] = line;
         }
-        content = content.join("");
+        this.content = this.content.join("");
 
         // create popup
-        const popup = document.createElement("div");
-        popup.setAttribute("class", "popup " + this.id);
-        popup.innerHTML = `
+        this.popupEl = document.createElement("div");
+        this.popupEl.classList.add("popup");
+        this.popupEl.classList.add(this.id);
+        this.popupEl.innerHTML = `
         <div class="popup-content">
             <div class="popup-header">
                 ${
                     /* only add title if hideTitle is off */
-                    hideTitle ? "" : `<div class="popup-title">${title}</div>`
+                    this.hideTitle
+                        ? ""
+                        : `<div class="popup-title">${this.title}</div>`
                 }
                 ${
                     /* only add close button if allowClose is on and hideCloseButton is off */
-                    allowClose && !hideCloseButton
+                    this.allowClose && !this.hideCloseButton
                         ? '<div class="popup-close">&times;</div>'
                         : ""
                 }
             </div>
-            <div class="popup-body">${content}</div>
+            <div class="popup-body">${this.content}</div>
         </div>`;
-        document.body.appendChild(popup);
+        document.body.appendChild(this.popupEl);
 
-        document.querySelectorAll(".popup").forEach((el) =>
-            el.addEventListener("click", (e) => {
-                if (
-                    e.target.className == "popup-close" ||
-                    e.target.classList.contains("popup")
-                ) {
-                    // if allowClose is off, don't close
-                    if (!allowClose) return;
-                    // close popup
-                    el.classList.remove("fade-in");
-                    el.classList.add("fade-out");
-                    // remember for next time
-                    if (localStorage && showOnce) {
-                        localStorage.setItem("popup-" + this.id, true);
-                    }
-                    postHide(this);
-                }
-            })
-        );
+        this.popupEl.addEventListener("click", (e) => {
+            if (
+                e.target.className == "popup-close" ||
+                e.target.classList.contains("popup")
+            ) {
+                // don't close if not allowed
+                if (!this.allowClose) return;
+                // close popup
+                this.hide();
+            }
+        });
 
         // run load callback if specified
         if (
@@ -246,38 +232,41 @@ class Popup {
         }
 
         // show popup (with no animation) if enabled
-        if (showImmediately) {
+        if (this.showImmediately) {
             // check for local storage (already closed once)
-            if (showOnce && localStorage) {
+            if (this.showOnce && localStorage) {
                 if (localStorage.getItem("popup-" + this.id)) {
                     return;
                 }
             }
-            document
-                .querySelector(".popup." + this.id)
-                .classList.add("fade-in");
+            this.popupEl.classList.add("fade-in");
             postShow(disableScroll);
         }
 
         // hide popup on escape key press
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape") {
+                // don't close if not allowed
+                if (!this.allowClose) return;
+                // close popup
                 this.hide();
             }
         });
     }
 
     show() {
-        const el = document.querySelector(".popup." + this.id);
-        el.classList.remove("fade-out");
-        el.classList.add("fade-in");
+        this.popupEl.classList.remove("fade-out");
+        this.popupEl.classList.add("fade-in");
         postShow(this.params.disableScroll ?? true);
     }
 
     hide() {
-        const el = document.querySelector(".popup." + this.id);
-        el.classList.remove("fade-in");
-        el.classList.add("fade-out");
+        this.popupEl.classList.remove("fade-in");
+        this.popupEl.classList.add("fade-out");
+        // remember for next time
+        if (localStorage && this.showOnce) {
+            localStorage.setItem("popup-" + this.id, true);
+        }
         postHide(this);
     }
 }
