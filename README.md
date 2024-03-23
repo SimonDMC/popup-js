@@ -7,7 +7,7 @@ A sleek and highly customizable JavaScript library used to generate full-screen 
 Install `popup-js` with the following script tag:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.2/popup.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
 ```
 
 ## Documentation
@@ -69,12 +69,11 @@ const infoPopup = new Popup({
         Six characters, ranging from 00-FF for 3 channels.
         Values are in {a-https://learn.sparkfun.com/tutorials/hexadecimal/hex-basics}[Base-16].
         big-margin§{bold}[#{red}[E4]{green}[F2]{blue}[DB]]
-        big-margin§{black bold}[#000000] is black.                {white bold shadow}[#FFFFFF] is white.
+        big-margin§{black bold}[#000000] is black.             {white bold shadow}[#FFFFFF] is white.
         big-margin§Good luck.`,
     titleColor: "rgb(92, 0, 95)",
     titleMargin: "0",
     backgroundColor: "#ffebfe",
-    fixedHeight: true,
     showImmediately: true,
     showOnce: true,
 });

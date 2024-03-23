@@ -34,8 +34,10 @@
 }
 
 .popup-title {
-    margin-top: 5vh;
-    font-size: min(55px, 11vw);
+    margin-top: .9em;
+    margin-left: .3em;
+    margin-right: .3em;
+    font-size: min(55px, 9vw);
     font-weight: 600;
 }
 

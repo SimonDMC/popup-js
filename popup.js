@@ -6,9 +6,8 @@ const head = document.getElementsByTagName("head")[0];
 const link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
-link.href =
-    "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.2/popup.min.css";
-//link.href = "../styles/popup.css";
+link.href = "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.css";
+//link.href = "../popup.css";
 link.media = "all";
 head.appendChild(link);
 
@@ -80,17 +79,11 @@ class Popup {
         this.hideTitle = this.params.hideTitle ?? false;
 
         // height and width calculations
-        this.height = `min(${770 * this.heightMultiplier}px, ${
-            90 * this.heightMultiplier
-        }vw)`;
-        this.width = `min(${770 * this.widthMultiplier}px, ${
-            90 * this.widthMultiplier
-        }vw)`;
+        this.height = `min(${770 * this.heightMultiplier}px, ${90 * this.heightMultiplier}vw)`;
+        this.width = `min(${770 * this.widthMultiplier}px, ${90 * this.widthMultiplier}vw)`;
 
         // font size calculation
-        this.fontSize = `min(${25 * this.fontSizeMultiplier}px, ${
-            5.5 * this.fontSizeMultiplier
-        }vw)`;
+        this.fontSize = `min(${25 * this.fontSizeMultiplier}px, ${4 * this.fontSizeMultiplier}vw)`;
 
         // create style tag https://stackoverflow.com/a/524721/19271522
         this.css = this.params.css ?? "";
@@ -98,15 +91,13 @@ class Popup {
         .popup.${this.id} {
             transition-duration: ${this.fadeTime};
             text-shadow: ${this.textShadow};
-            font-family: '${
-                this.params.font ?? "Inter"
-            }', 'Inter', Helvetica, sans-serif;
+            font-family: '${this.params.font ?? "Inter"}', 'Inter', Helvetica, sans-serif;
         }
         
         .popup.${this.id} .popup-content {
             background-color: ${this.backgroundColor};
-            width:${this.width}; 
-            height:${this.fixedHeight ? this.height : "fit-content"};
+            width: ${this.width}; 
+            height: ${this.fixedHeight ? this.height : "unset"};
             border-radius: ${this.borderRadius};
             border: ${this.borderWidth} solid ${this.borderColor};
         }
@@ -164,18 +155,10 @@ class Popup {
             /* ------- Reduced element formatting ------- */
 
             // a
-            while (/{a-(.*?)}\[(.*?)]/.test(line))
-                line = line.replace(
-                    /{a-(.*?)}\[(.*?)]/g,
-                    '<a href="$1" target="_blank">$2</a>'
-                );
+            while (/{a-(.*?)}\[(.*?)]/.test(line)) line = line.replace(/{a-(.*?)}\[(.*?)]/g, '<a href="$1" target="_blank">$2</a>');
 
             // button
-            while (/{btn-(.*?)}\[(.*?)]/.test(line))
-                line = line.replace(
-                    /{btn-(.*?)}\[(.*?)]/g,
-                    '<button class="$1">$2</button>'
-                );
+            while (/{btn-(.*?)}\[(.*?)]/.test(line)) line = line.replace(/{btn-(.*?)}\[(.*?)]/g, '<button class="$1">$2</button>');
 
             // reduced style formatting
             line = line
@@ -196,15 +179,11 @@ class Popup {
             <div class="popup-header">
                 ${
                     /* only add title if hideTitle is off */
-                    this.hideTitle
-                        ? ""
-                        : `<div class="popup-title">${this.title}</div>`
+                    this.hideTitle ? "" : `<div class="popup-title">${this.title}</div>`
                 }
                 ${
                     /* only add close button if allowClose is on and hideCloseButton is off */
-                    this.allowClose && !this.hideCloseButton
-                        ? '<div class="popup-close">&times;</div>'
-                        : ""
+                    this.allowClose && !this.hideCloseButton ? '<div class="popup-close">&times;</div>' : ""
                 }
             </div>
             <div class="popup-body">${this.content}</div>
@@ -212,10 +191,7 @@ class Popup {
         document.body.appendChild(this.popupEl);
 
         this.popupEl.addEventListener("click", (e) => {
-            if (
-                e.target.className == "popup-close" ||
-                e.target.classList.contains("popup")
-            ) {
+            if (e.target.className == "popup-close" || e.target.classList.contains("popup")) {
                 // don't close if not allowed
                 if (!this.allowClose) return;
                 // close popup
@@ -224,10 +200,7 @@ class Popup {
         });
 
         // run load callback if specified
-        if (
-            this.params.loadCallback &&
-            typeof this.params.loadCallback == "function"
-        ) {
+        if (this.params.loadCallback && typeof this.params.loadCallback == "function") {
             this.params.loadCallback();
         }
 
@@ -278,10 +251,7 @@ function postShow(disableScrollParam) {
 
 function postHide(popup) {
     // call hide callback if set
-    if (
-        popup.params.hideCallback &&
-        typeof popup.params.hideCallback == "function"
-    ) {
+    if (popup.params.hideCallback && typeof popup.params.hideCallback == "function") {
         popup.params.hideCallback();
     }
     enableScroll();
