@@ -79,7 +79,7 @@ const infoPopup = new Popup({
 });
 ```
 
-![Color Guesser Popup Showcase](https://media.discordapp.net/attachments/847794209028833310/999926020817825872/unknown.png)
+![Color Guesser Popup Showcase](https://simondmc.com/assets/imgs/covers/other/popupjs-colorguesser-full.webp)
 
 ## Cheat Sheet
 
