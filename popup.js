@@ -6,7 +6,7 @@ const head = document.getElementsByTagName("head")[0];
 const link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
-link.href = "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.css";
+link.href = "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.4/popup.min.css";
 //link.href = "../popup.css";
 link.media = "all";
 head.appendChild(link);
