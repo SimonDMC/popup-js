@@ -91,7 +91,7 @@ class Popup {
         .popup.${this.id} {
             transition-duration: ${this.fadeTime};
             text-shadow: ${this.textShadow};
-            font-family: '${this.params.font ?? "Inter"}', 'Inter', Helvetica, sans-serif;
+            font-family: ${this.params.font ?? "Inter"}, 'Inter', Helvetica, sans-serif;
         }
         
         .popup.${this.id} .popup-content {
@@ -213,7 +213,7 @@ class Popup {
                 }
             }
             this.popupEl.classList.add("fade-in");
-            postShow(disableScroll);
+            postShow(this.disableScroll);
         }
 
         // hide popup on escape key press
