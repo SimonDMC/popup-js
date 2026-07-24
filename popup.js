@@ -6,8 +6,8 @@ const head = document.getElementsByTagName("head")[0];
 const link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
-link.href = "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.4/popup.min.css";
-//link.href = "../popup.css";
+link.href = "https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.5/popup.min.css";
+//link.href = "./popup.css";
 link.media = "all";
 head.appendChild(link);
 
@@ -59,6 +59,7 @@ class Popup {
         this.linkColor = this.params.linkColor ?? "#383838";
         this.widthMultiplier = this.params.widthMultiplier ?? 1;
         this.heightMultiplier = this.params.heightMultiplier ?? 0.66;
+        this.titleSizeMultiplier = this.params.titleSizeMultiplier ?? 1;
         this.fontSizeMultiplier = this.params.fontSizeMultiplier ?? 1;
         this.borderRadius = this.params.borderRadius ?? "15px";
         this.sideMargin = this.params.sideMargin ?? "3%";
@@ -83,6 +84,7 @@ class Popup {
         this.width = `min(${770 * this.widthMultiplier}px, ${90 * this.widthMultiplier}vw)`;
 
         // font size calculation
+        this.titleSize = `min(${55 * this.titleSizeMultiplier}px, ${9 * this.titleSizeMultiplier}vw)`;
         this.fontSize = `min(${25 * this.fontSizeMultiplier}px, ${4 * this.fontSizeMultiplier}vw)`;
 
         // create style tag https://stackoverflow.com/a/524721/19271522
@@ -108,6 +110,7 @@ class Popup {
 
         .popup.${this.id} .popup-title {
             color: ${this.titleColor};
+            font-size: ${this.titleSize};
         }
 
         .popup.${this.id} .popup-close {
@@ -155,10 +158,12 @@ class Popup {
             /* ------- Reduced element formatting ------- */
 
             // a
-            while (/{a-(.*?)}\[(.*?)]/.test(line)) line = line.replace(/{a-(.*?)}\[(.*?)]/g, '<a href="$1" target="_blank">$2</a>');
+            while (/{a-(.*?)}\[(.*?)]/.test(line))
+                line = line.replace(/{a-(.*?)}\[(.*?)]/g, '<a href="$1" target="_blank">$2</a>');
 
             // button
-            while (/{btn-(.*?)}\[(.*?)]/.test(line)) line = line.replace(/{btn-(.*?)}\[(.*?)]/g, '<button class="$1">$2</button>');
+            while (/{btn-(.*?)}\[(.*?)]/.test(line))
+                line = line.replace(/{btn-(.*?)}\[(.*?)]/g, '<button class="$1">$2</button>');
 
             // reduced style formatting
             line = line
@@ -183,7 +188,9 @@ class Popup {
                 }
                 ${
                     /* only add close button if allowClose is on and hideCloseButton is off */
-                    this.allowClose && !this.hideCloseButton ? '<div class="popup-close">&times;</div>' : ""
+                    this.allowClose && !this.hideCloseButton
+                        ? '<div class="popup-close">&times;</div>'
+                        : ""
                 }
             </div>
             <div class="popup-body">${this.content}</div>

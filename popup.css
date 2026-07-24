@@ -22,6 +22,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
 }
 
 .popup-header {
@@ -34,9 +35,9 @@
 }
 
 .popup-title {
-    margin-top: .9em;
-    margin-left: .3em;
-    margin-right: .3em;
+    margin-top: 0.9em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
     font-size: min(55px, 9vw);
     font-weight: 600;
 }
